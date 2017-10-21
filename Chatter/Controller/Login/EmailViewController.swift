@@ -90,6 +90,9 @@ class EmailViewController: UIViewController {
         txtEmail.placeholder = "Email"
         txtEmail.detail = "Error, incorrect email"
         txtEmail.isClearIconButtonEnabled = true
+        txtEmail.keyboardType = .emailAddress
+        txtEmail.autocorrectionType = .no
+        txtEmail.autocapitalizationType = .none
         txtEmail.delegate = self
         txtEmail.isPlaceholderUppercasedWhenEditing = true
         //txtEmail.placeholderAnimation = .hidden
@@ -105,10 +108,13 @@ class EmailViewController: UIViewController {
         view.addSubview(txtPassword)
         
         
-        btnLogin = RaisedButton(title: "Login", titleColor: UIColor.white)
+        btnLogin = RaisedButton()//(title: "Login", titleColor: UIColor.white)
         if viewType == .signup{
             btnLogin.setTitle("Signup", for: .normal)
+        }else {
+            btnLogin.setTitle("Login", for: .normal)
         }
+        btnLogin.titleColor = UIColor.white
         btnLogin.translatesAutoresizingMaskIntoConstraints = false
         btnLogin.backgroundColor = #colorLiteral(red: 0.2941176471, green: 0.4549019608, blue: 1, alpha: 1)
         btnLogin.cornerRadiusPreset = .cornerRadius1
@@ -152,7 +158,36 @@ class EmailViewController: UIViewController {
     // MARK: - Internal Helpers
 
     @objc fileprivate func btnAction(_ button: Button) {
-        print("Action")
+        switch viewType {
+        case .signup:
+            Auth.auth().createUser(withEmail: txtEmail.text!, password: txtPassword.text!, completion: { (user, error) in
+                if error == nil{
+                    print(user?.email)
+//                    user?.displayName
+//                    user?.isAnonymous
+//                    user?.isEmailVerified
+//                    user?.metadata
+//                    user?.phoneNumber
+//                    user?.photoURL
+//                    user?.providerID
+//                    user?.providerData
+                    //Utility.getAppDelegate().loadHomeController()
+                }else{
+                    print(error?.localizedDescription as Any)
+                }
+            })
+            break
+        default:
+            Auth.auth().signIn(withEmail: txtEmail.text!, password: txtPassword.text!, completion: { (user, error) in
+                if error == nil{
+                    print(user?.email)
+                    //Utility.getAppDelegate().loadHomeController()
+                }else{
+                    print(error?.localizedDescription as Any)
+                }
+            })
+            break
+        }
         
     }
 
@@ -200,4 +235,5 @@ extension EmailViewController: TextFieldDelegate {
         return true
     }
 }
+
 
