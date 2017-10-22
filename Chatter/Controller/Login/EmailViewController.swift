@@ -174,12 +174,17 @@ class EmailViewController: UIViewController {
                     //Utility.getAppDelegate().loadHomeController()
                 }else{
                     print(error?.localizedDescription as Any)
+                    if let newError : NSError = error as? NSError{
+                        print(FirebaseErrorCodes(rawValue: newError.code).unsafelyUnwrapped)
+                    }
                 }
             })
             break
         default:
             Auth.auth().signIn(withEmail: txtEmail.text!, password: txtPassword.text!, completion: { (user, error) in
                 if error == nil{
+                    
+                
                     print(user?.email)
                     //Utility.getAppDelegate().loadHomeController()
                 }else{

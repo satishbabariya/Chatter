@@ -10,7 +10,6 @@
 		6A713AD398EC5FBC80B52B29 /* Pods_ChatterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F445BC222D48760B674D1503 /* Pods_ChatterUITests.framework */; };
 		B24FC652FFD8FF5A79A560B2 /* Pods_Chatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AE6CBA0E9BA9514B1E26888 /* Pods_Chatter.framework */; };
 		E66AC6B0992536D2D21C5C22 /* Pods_ChatterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C80560F1DABEFED83C85D601 /* Pods_ChatterTests.framework */; };
-		F507AA511F9918F700CD9FB6 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F507AA501F9918F700CD9FB6 /* HomeController.swift */; };
 		F507AA531F99195800CD9FB6 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F507AA521F99195800CD9FB6 /* Utility.swift */; };
 		F52453D31F9B0F1A00CD034E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52453D21F9B0F1A00CD034E /* SplashViewController.swift */; };
 		F5AA45FC1F9907C6009D60DC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5AA45FB1F9900EF009D60DC /* GoogleService-Info.plist */; };
@@ -18,7 +17,9 @@
 		F5F3D13B1F9B267500655209 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3D13A1F9B267500655209 /* Reachability.swift */; };
 		F5F3D13D1F9B2C3100655209 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3D13C1F9B2C3100655209 /* MoreViewController.swift */; };
 		F5F3D13F1F9B447E00655209 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3D13E1F9B447E00655209 /* EmailViewController.swift */; };
-		F5FB14561F98D6BD00B6D918 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FB14551F98D6BD00B6D918 /* LoginController.swift */; };
+		F5F9C5091F9C7678004304BF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F9C5081F9C7678004304BF /* RegisterViewController.swift */; };
+		F5F9C50B1F9C76D9004304BF /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F9C50A1F9C76D9004304BF /* FirebaseAuth.swift */; };
+		F5F9C50D1F9C781E004304BF /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F9C50C1F9C781E004304BF /* FirebaseError.swift */; };
 		F5FB14581F98DC0A00B6D918 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FB14571F98DC0A00B6D918 /* Appearance.swift */; };
 		F5FEC1221F98BF6700497C08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FEC1211F98BF6700497C08 /* AppDelegate.swift */; };
 		F5FEC1291F98BF6700497C08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5FEC1281F98BF6700497C08 /* Assets.xcassets */; };
@@ -58,7 +59,6 @@
 		C80560F1DABEFED83C85D601 /* Pods_ChatterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1EE9172A361D3BE403EC11A /* Pods-ChatterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatterUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChatterUITests/Pods-ChatterUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F445BC222D48760B674D1503 /* Pods_ChatterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F507AA501F9918F700CD9FB6 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		F507AA521F99195800CD9FB6 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		F52453D21F9B0F1A00CD034E /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		F5AA45FB1F9900EF009D60DC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -66,7 +66,9 @@
 		F5F3D13A1F9B267500655209 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		F5F3D13C1F9B2C3100655209 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		F5F3D13E1F9B447E00655209 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
-		F5FB14551F98D6BD00B6D918 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		F5F9C5081F9C7678004304BF /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		F5F9C50A1F9C76D9004304BF /* FirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
+		F5F9C50C1F9C781E004304BF /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		F5FB14571F98DC0A00B6D918 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		F5FEC11E1F98BF6700497C08 /* Chatter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5FEC1211F98BF6700497C08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				F5F3D13E1F9B447E00655209 /* EmailViewController.swift */,
 				F5FEC1D81F9B64A700044872 /* ForgotPasswordViewController.swift */,
 				F5FEC1DA1F9B67BD00044872 /* PhoneViewController.swift */,
+				F5F9C5081F9C7678004304BF /* RegisterViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -168,8 +171,6 @@
 			isa = PBXGroup;
 			children = (
 				F52453D11F9B0ED300CD034E /* Login */,
-				F5FB14551F98D6BD00B6D918 /* LoginController.swift */,
-				F507AA501F9918F700CD9FB6 /* HomeController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -185,6 +186,8 @@
 		F5FB14531F98D62300B6D918 /* Server Request */ = {
 			isa = PBXGroup;
 			children = (
+				F5F9C50A1F9C76D9004304BF /* FirebaseAuth.swift */,
+				F5F9C50C1F9C781E004304BF /* FirebaseError.swift */,
 			);
 			path = "Server Request";
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				"${BUILT_PRODUCTS_DIR}/Motion/Motion.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/TinyConstraints/TinyConstraints.framework",
 				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -451,6 +455,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TinyConstraints.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -595,18 +600,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5F9C50D1F9C781E004304BF /* FirebaseError.swift in Sources */,
+				F5F9C50B1F9C76D9004304BF /* FirebaseAuth.swift in Sources */,
 				F5F3D13F1F9B447E00655209 /* EmailViewController.swift in Sources */,
+				F5F9C5091F9C7678004304BF /* RegisterViewController.swift in Sources */,
 				F5F3D13B1F9B267500655209 /* Reachability.swift in Sources */,
 				F5FEC1D91F9B64A700044872 /* ForgotPasswordViewController.swift in Sources */,
 				F507AA531F99195800CD9FB6 /* Utility.swift in Sources */,
-				F507AA511F9918F700CD9FB6 /* HomeController.swift in Sources */,
 				F5FEC1221F98BF6700497C08 /* AppDelegate.swift in Sources */,
 				F5FEC1D71F9B5E2900044872 /* Extensions.swift in Sources */,
 				F52453D31F9B0F1A00CD034E /* SplashViewController.swift in Sources */,
 				F5F3D13D1F9B2C3100655209 /* MoreViewController.swift in Sources */,
 				F5FEC1DB1F9B67BD00044872 /* PhoneViewController.swift in Sources */,
 				F5FB14581F98DC0A00B6D918 /* Appearance.swift in Sources */,
-				F5FB14561F98D6BD00B6D918 /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

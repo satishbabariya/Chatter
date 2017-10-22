@@ -12,6 +12,7 @@ target 'Chatter' do
     pod 'RxCocoa'
     pod 'TransitionButton'
     pod 'Gifu'
+    pod 'SwiftMessages'
     
     # [START auth_pod]
     pod 'Firebase/Auth'

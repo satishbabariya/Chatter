@@ -67,20 +67,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate{
     // MARK: Public Method
-    open func loadUI() {
+    fileprivate func loadUI() {
         window = UIWindow(frame: UIScreen.main.bounds)
         loadSplashController()
         window?.makeKeyAndVisible()
     }
     
-    fileprivate func loadLoginView() {
-        let navController : UINavigationController = UINavigationController(rootViewController: LoginController())
-        window?.rootViewController = navController
-    }
-    
     func loadHomeController() {
-        let navController : UINavigationController = UINavigationController(rootViewController: HomeController())
-        window?.rootViewController = navController
+       // let navController : UINavigationController = UINavigationController(rootViewController: HomeController())
+       // window?.rootViewController = navController
     }
 
     func loadSplashController() {
@@ -123,7 +118,7 @@ extension AppDelegate : GIDSignInDelegate{
     // [START headless_google_auth]
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         // [START_EXCLUDE]
-        guard let controller = GIDSignIn.sharedInstance().uiDelegate as? LoginController else { return }
+        guard let controller = GIDSignIn.sharedInstance().uiDelegate as? MoreViewController else { return }
         // [END_EXCLUDE]
         if let error = error {
             // [START_EXCLUDE]

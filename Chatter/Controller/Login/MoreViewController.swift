@@ -8,6 +8,11 @@
 
 import UIKit
 import Material
+import GoogleSignIn
+import FBSDKCoreKit
+import FBSDKLoginKit
+import TwitterKit
+import Firebase
 
 class MoreViewController: UIViewController {
     
@@ -165,4 +170,32 @@ class MoreViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+}
+
+
+extension MoreViewController : GIDSignInUIDelegate{
+    
+    
+    @objc fileprivate func btnGoogleLoginAction(_ button: Button) {
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
+    @objc fileprivate func btnFacebookLoginAction(_ button: Button) {
+        
+    }
+    
+    @objc fileprivate func btnTwitterLoginAction(_ button: Button) {
+        
+    }
+    
+    func firebaseLogin(_ credential: AuthCredential) {
+        Auth.auth().signIn(with: credential) { (user, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            Utility.getAppDelegate().loadHomeController()
+        }
+    }
 }
