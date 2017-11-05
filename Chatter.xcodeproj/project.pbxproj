@@ -17,8 +17,6 @@
 		F5F3D13B1F9B267500655209 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3D13A1F9B267500655209 /* Reachability.swift */; };
 		F5F3D13D1F9B2C3100655209 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3D13C1F9B2C3100655209 /* MoreViewController.swift */; };
 		F5F3D13F1F9B447E00655209 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3D13E1F9B447E00655209 /* EmailViewController.swift */; };
-		F5F9C5091F9C7678004304BF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F9C5081F9C7678004304BF /* RegisterViewController.swift */; };
-		F5F9C50B1F9C76D9004304BF /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F9C50A1F9C76D9004304BF /* FirebaseAuth.swift */; };
 		F5F9C50D1F9C781E004304BF /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F9C50C1F9C781E004304BF /* FirebaseError.swift */; };
 		F5FB14581F98DC0A00B6D918 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FB14571F98DC0A00B6D918 /* Appearance.swift */; };
 		F5FEC1221F98BF6700497C08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FEC1211F98BF6700497C08 /* AppDelegate.swift */; };
@@ -66,8 +64,6 @@
 		F5F3D13A1F9B267500655209 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		F5F3D13C1F9B2C3100655209 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		F5F3D13E1F9B447E00655209 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
-		F5F9C5081F9C7678004304BF /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		F5F9C50A1F9C76D9004304BF /* FirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
 		F5F9C50C1F9C781E004304BF /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		F5FB14571F98DC0A00B6D918 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		F5FEC11E1F98BF6700497C08 /* Chatter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,7 +142,6 @@
 				F5F3D13E1F9B447E00655209 /* EmailViewController.swift */,
 				F5FEC1D81F9B64A700044872 /* ForgotPasswordViewController.swift */,
 				F5FEC1DA1F9B67BD00044872 /* PhoneViewController.swift */,
-				F5F9C5081F9C7678004304BF /* RegisterViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -186,7 +181,6 @@
 		F5FB14531F98D62300B6D918 /* Server Request */ = {
 			isa = PBXGroup;
 			children = (
-				F5F9C50A1F9C76D9004304BF /* FirebaseAuth.swift */,
 				F5F9C50C1F9C781E004304BF /* FirebaseError.swift */,
 			);
 			path = "Server Request";
@@ -435,11 +429,11 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Material/Material.framework",
 				"${BUILT_PRODUCTS_DIR}/Motion/Motion.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/TinyConstraints/TinyConstraints.framework",
-				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -453,11 +447,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Material.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TinyConstraints.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,9 +595,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5F9C50D1F9C781E004304BF /* FirebaseError.swift in Sources */,
-				F5F9C50B1F9C76D9004304BF /* FirebaseAuth.swift in Sources */,
 				F5F3D13F1F9B447E00655209 /* EmailViewController.swift in Sources */,
-				F5F9C5091F9C7678004304BF /* RegisterViewController.swift in Sources */,
 				F5F3D13B1F9B267500655209 /* Reachability.swift in Sources */,
 				F5FEC1D91F9B64A700044872 /* ForgotPasswordViewController.swift in Sources */,
 				F507AA531F99195800CD9FB6 /* Utility.swift in Sources */,

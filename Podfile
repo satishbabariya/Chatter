@@ -10,9 +10,9 @@ target 'Chatter' do
     pod 'TinyConstraints'
     pod 'RxSwift'
     pod 'RxCocoa'
-    pod 'TransitionButton'
     pod 'Gifu'
     pod 'SwiftMessages'
+    pod 'PKHUD', '~> 5.0'
     
     # [START auth_pod]
     pod 'Firebase/Auth'

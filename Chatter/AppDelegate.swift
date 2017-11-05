@@ -74,8 +74,8 @@ extension AppDelegate{
     }
     
     func loadHomeController() {
-       // let navController : UINavigationController = UINavigationController(rootViewController: HomeController())
-       // window?.rootViewController = navController
+//        let navController : UINavigationController = UINavigationController(rootViewController: HomeController())
+//        window?.rootViewController = navController
     }
 
     func loadSplashController() {

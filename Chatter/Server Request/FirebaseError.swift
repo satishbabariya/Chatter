@@ -9,7 +9,7 @@
 import UIKit
 import SwiftMessages
 
-enum FirebaseErrorCodes: Int{
+enum FirebaseAuthErrorCodes: Int{
     /** Indicates a validation error with the custom token.
      */
     case FIRAuthErrorCodeInvalidCustomToken = 17000
@@ -254,100 +254,20 @@ enum FirebaseErrorCodes: Int{
     case FIRAuthErrorCodeInternalError = 17999
 }
 
-enum FirebaseErrorMessages: String {
-    
-    
-    // MARK: - Firebase Auth Errors -
-    
-    // - Common Error -
-    
-    //Indicates a network error occurred during the operation.
-    case FIRAuthErrorCodeNetworkError = "Please try again."
-    
-    //Indicates the user account was not found. This could happen if the user account has been deleted.
-    case FIRAuthErrorCodeUserNotFound = "User account does not exists, please sign up first."
-    
-    //Indicates the current user’s token has expired, for example, the user may have changed account password on another device. You must prompt the user to sign in again on this device.
-    case FIRAuthErrorCodeUserTokenExpired = "Please Signin again."
-    
-    //Indicates that the request has been blocked after an abnormal number of requests have been made from the caller device to the Firebase Authentication servers. Retry again after some time.
-    case FIRAuthErrorCodeTooManyRequests = "You have been blocked for some time due to too many requests, Please Retry again after some time."
-    
-    //Indicates the application has been configured with an invalid API key.
-    case FIRAuthErrorCodeInvalidAPIKey = "Error, Please contact Administrator"
-    
-    //Indicates the App is not authorized to use Firebase Authentication with the provided API Key. go to the Google API Console and check under the credentials tab that the API key you are using has your application’s bundle ID whitelisted.
-    case FIRAuthErrorCodeAppNotAuthorized = "Authorization Error, Please contact Administrator"
-    
-    //Indicates an error occurred when accessing the keychain. The NSLocalizedFailureReasonErrorKey and NSUnderlyingErrorKey fields in the NSError.userInfo dictionary will contain more information about the error encountered.
-    case FIRAuthErrorCodeKeychainError = "Internal Error"
-    
-    //Indicates an internal error occurred. Please report the error with the entire NSError object.
-    case FIRAuthErrorCodeInternalError = "Internal Error."
-    
-    
-    // - Specific Errors -
-    
-    //Indicates the email address is malformed.
-    case FIRAuthErrorCodeInvalidEmail = "Invalid Email Address."
-    
-    //Indicates that email and password accounts are not enabled. Enable them in the Auth section of the Firebase console.
-    case FIRAuthErrorCodeOperationNotAllowed = "You are not Authorized, Please contact administrator"
-    
-    //Indicates the user's account is disabled.
-    case FIRAuthErrorCodeUserDisabled = "Your account has been disabled"
-    
-    //Indicates the user attempted sign in with a wrong password.
-    case FIRAuthErrorCodeWrongPassword = "Wrong password, Please try again"
-    
-    // - signInWithCredential -
-    
-    //Indicates the supplied credential is invalid. This could happen if it has expired or it is malformed.
-    case FIRAuthErrorCodeInvalidCredential = "Invalid Credentials"
-    
-    //Indicates the email asserted by the credential (e.g. the email in a Facebook access token) is already in use by an existing account, that cannot be authenticated with this sign-in method. Call fetchProvidersForEmail for this user’s email and then prompt them to sign in with any of the sign-in providers returned. This error will only be thrown if the "One account per email address" setting is enabled in the Firebase console, under Authentication settings.
-    case FIRAuthErrorCodeEmailAlreadyInUse = "Email is already in use, Please try with another email address."
-    
-    //Indicates a validation error with the custom token.
-    case FIRAuthErrorCodeInvalidCustomToken = "Validation error, Please contact administrator."
-    
-    //Indicates the service account and the API key belong to different projects.
-    case FIRAuthErrorCodeCustomTokenMismatch = "Service Account error, Please contact administrator."
-    
-    //Indicates an attempt to set a password that is considered too weak. The NSLocalizedFailureReasonErrorKey field in the NSError.userInfo dictionary object will contain more detailed explanation that can be shown to the user.
-    case FIRAuthErrorCodeWeakPassword = "Password is too weak"
-    
-    //Indicates that the signed-in user's refresh token, that holds session information, is invalid. You must prompt the user to sign in again on this device.
-    case FIRAuthErrorCodeInvalidUserToken = "Your session has been expired, please signin again"
-    
-    //Indicates that an attempt was made to reauthenticate with a user which is not the current user.
-    case FIRAuthErrorCodeUserMismatch = "User is Mismatchd."
-    
-    //Updating a user’s email is a security sensitive operation that requires a recent login from the user. This error indicates the user has not signed in recently enough. To resolve, reauthenticate the user by invoking reauthenticateWithCredential:completion: on FIRUser.
-    case FIRAuthErrorCodeRequiresRecentLogin = "Please signin again for further operations."
-    
-    
-    //Indicates an attempt to link a provider of a type already linked to this account.
-    case FIRAuthErrorCodeProviderAlreadyLinked = "This provider has already linked to this account."
-    
-    //Indicates an attempt to link with a credential that has already been linked with a different Firebase account.
-    case FIRAuthErrorCodeCredentialAlreadyInUse = "This provider has already linked to another account."
-    
-    //Indicates an attempt to unlink a provider that is not linked to the account.
-    case FIRAuthErrorCodeNoSuchProvider = "Can't unlink a provider that is not linked to this account"
-    
-    
-    
-    
-
-}
-
-class FirebaseError: NSObject {
+class FirebaseAuthError: NSObject {
     
     // MARK: - Attributes -
     
     
     // MARK: - Lifecycle -
+    
+    static let shared : FirebaseAuthError = {
+        
+        let instance = FirebaseAuthError()
+        return instance
+        
+    }()
+
     
     deinit{
         
@@ -355,34 +275,120 @@ class FirebaseError: NSObject {
     
     // MARK: - Public Interface -
     
-    func showErrorMessage(Error error: NSError) {
-        if let errorName = error.userInfo["error_name"] as? String {
-            
-            //switch FirebaseErrorMessages
+    func translate(FirebaseErrorCode code: FirebaseAuthErrorCodes)-> String {
+        switch code {
         
+        case .FIRAuthErrorCodeInvalidCustomToken:
+            return "Validation error, Please contact administrator."
+        case .FIRAuthErrorCodeCustomTokenMismatch:
+            return "Service Account error, Please contact administrator."
+        case .FIRAuthErrorCodeInvalidCredential:
+            return "Invalid Credentials"
+        case .FIRAuthErrorCodeUserDisabled:
+            return "Your account has been disabled"
+        case .FIRAuthErrorCodeOperationNotAllowed:
+            return "You are not Authorized, Please contact administrator"
+        case .FIRAuthErrorCodeEmailAlreadyInUse:
+            return "Email is already in use, Please try with another email address."
+        case .FIRAuthErrorCodeInvalidEmail:
+            return "Invalid Email Address."
+        case .FIRAuthErrorCodeWrongPassword:
+            return "Wrong password, Please try again"
+        case .FIRAuthErrorCodeTooManyRequests:
+            return "You have been blocked for some time due to too many requests, Please Retry again after some time."
+        case .FIRAuthErrorCodeUserNotFound:
+            return "User account does not exists, please sign up first."
+        case .FIRAuthErrorCodeAccountExistsWithDifferentCredential:
+            return "You have attemped to change email or password more than 5 minutes after signing in. Please try again later"
+        case .FIRAuthErrorCodeRequiresRecentLogin:
+            return "Please signin again for further operations."
+        case .FIRAuthErrorCodeProviderAlreadyLinked:
+            return "This provider has already linked to this account."
+        case .FIRAuthErrorCodeNoSuchProvider:
+            return "Can't unlink a provider that is not linked to this account"
+        case .FIRAuthErrorCodeInvalidUserToken:
+            return "Your session has been expired, please signin again"
+        case .FIRAuthErrorCodeNetworkError:
+            return "Please try again."
+        case .FIRAuthErrorCodeUserTokenExpired:
+            return "Please Signin again."
+        case .FIRAuthErrorCodeInvalidAPIKey:
+            return "Error, Please contact Administrator"
+        case .FIRAuthErrorCodeUserMismatch:
+            return "User is Mismatchd."
+        case .FIRAuthErrorCodeCredentialAlreadyInUse:
+            return "This provider has already linked to another account."
+        case .FIRAuthErrorCodeWeakPassword:
+            return  "Password is too weak"
+        case .FIRAuthErrorCodeAppNotAuthorized:
+            return "Authorization Error, Please contact Administrator"
+        case .FIRAuthErrorCodeExpiredActionCode:
+            return "Your session has been expired, Please signin again"
+        case .FIRAuthErrorCodeInvalidActionCode:
+            return "Session is invalid, Please signin again"
+        case .FIRAuthErrorCodeInvalidMessagePayload:
+            return "Invalid Password Please enter valid value"
+        case .FIRAuthErrorCodeInvalidSender:
+            return "Email is invalid."
+        case .FIRAuthErrorCodeInvalidRecipientEmail:
+            return "Recipient email is invalid."
+        case .FIRAuthErrorCodeMissingEmail:
+            return "Email Address is Required"
+        case .FIRAuthErrorCodeMissingIosBundleID:
+            return "Internal error, Please contact administrator"
+        case .FIRAuthErrorCodeMissingAndroidPackageName:
+            return "Internal error, Please contact administrator"
+        case .FIRAuthErrorCodeUnauthorizedDomain:
+            return "Internal error, Please contact administrator"
+        case .FIRAuthErrorCodeInvalidContinueURI:
+            return "Internal error, Please contact administrator"
+        case .FIRAuthErrorCodeMissingContinueURI:
+            return "Internal error, Please contact administrator"
+        case .FIRAuthErrorCodeMissingPhoneNumber:
+            return "Phone Number is Required"
+        case .FIRAuthErrorCodeInvalidPhoneNumber:
+            return "Invalid Phone Number"
+        case .FIRAuthErrorCodeMissingVerificationCode:
+            return "Verification code is required, Please signin again"
+        case .FIRAuthErrorCodeInvalidVerificationCode:
+            return "Invalid verification code"
+        case .FIRAuthErrorCodeMissingVerificationID:
+            return "Verification id is required"
+        case .FIRAuthErrorCodeInvalidVerificationID:
+            return "Invalid Verification ID"
+        case .FIRAuthErrorCodeMissingAppCredential:
+            return "Missing information"
+        case .FIRAuthErrorCodeInvalidAppCredential:
+            return "Invalid Information"
+        case .FIRAuthErrorCodeSessionExpired:
+            return "Please request for SMS code again"
+        case .FIRAuthErrorCodeQuotaExceeded:
+            return "Internal error, Please contact administrator"
+        case .FIRAuthErrorCodeMissingAppToken:
+            return "Internal error, Please contact administrator"
+        case .FIRAuthErrorCodeNotificationNotForwarded:
+             return "Internal error, Please try again"
+        case .FIRAuthErrorCodeAppNotVerified:
+            return "Internal error, Please contact administrator"
+        case .FIRAuthErrorCodeCaptchaCheckFailed:
+            return "Your reCAPTCHA token is not valid."
+        case .FIRAuthErrorCodeWebContextAlreadyPresented:
+            return "Context already presented."
+        case .FIRAuthErrorCodeWebContextCancelled:
+            return "URL presentation was cancelled."
+        case .FIRAuthErrorCodeAppVerificationUserInteractionFailure:
+            return "Failure during verification."
+        case .FIRAuthErrorCodeInvalidClientID:
+            return "Invalid flow, Please contact administrator"
+        case .FIRAuthErrorCodeWebNetworkRequestFailed:
+            return "Network request failed, Please try again."
+        case .FIRAuthErrorCodeWebInternalError:
+            return "Internal Error, Please try again."
+        case .FIRAuthErrorCodeKeychainError:
+            return "Internal Error, Please try again."
+        case .FIRAuthErrorCodeInternalError:
+            return "Internal Error, Please try again after some time."
         }
-    }
-    
-    func translateErrors(error: NSError)-> String {
-        var translatedMessage = ""
-        
-        if let errorName = error.userInfo["error_name"] as? String {
-            
-            switch errorName {
-            case "ERROR_WEAK_PASSWORD":
-                translatedMessage = "The password must be 6 characters long or more."
-            case "ERROR_EMAIL_ALREADY_IN_USE":
-                translatedMessage = "The email address is already in use by another account."
-            case "ERROR_USER_NOT_FOUND":
-                translatedMessage = "There is no user record corresponding to this identifier. The user may have been deleted."
-            case "ERROR_INVALID_EMAIL":
-                translatedMessage = "The email address is badly formatted."
-            default:
-                translatedMessage = error.localizedDescription
-            }
-        }
-        
-        return translatedMessage
     }
     
     

@@ -81,77 +81,77 @@
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
-		<key>Pods-Chatter.xcscheme</key>
+		<key>PKHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>12</integer>
 		</dict>
-		<key>Pods-ChatterTests.xcscheme</key>
+		<key>Pods-Chatter.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>13</integer>
 		</dict>
-		<key>Pods-ChatterUITests.xcscheme</key>
+		<key>Pods-ChatterTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>14</integer>
 		</dict>
-		<key>RxBlocking.xcscheme</key>
+		<key>Pods-ChatterUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>15</integer>
 		</dict>
-		<key>RxCocoa.xcscheme</key>
+		<key>RxBlocking.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>16</integer>
 		</dict>
-		<key>RxSwift.xcscheme</key>
+		<key>RxCocoa.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>17</integer>
 		</dict>
-		<key>RxTest.xcscheme</key>
+		<key>RxSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>18</integer>
 		</dict>
-		<key>SwiftMessages-SwiftMessages.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>20</integer>
-		</dict>
-		<key>SwiftMessages.xcscheme</key>
+		<key>RxTest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>19</integer>
 		</dict>
-		<key>TinyConstraints.xcscheme</key>
+		<key>SwiftMessages-SwiftMessages.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>21</integer>
 		</dict>
-		<key>TransitionButton.xcscheme</key>
+		<key>SwiftMessages.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>20</integer>
+		</dict>
+		<key>TinyConstraints.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
