@@ -14,6 +14,7 @@ import UserNotifications
 import FBSDKCoreKit
 import GoogleSignIn
 import TwitterKit
+import PKHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
+        registerForPushNotifications()
         // [START setup_gidsignin]
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
@@ -83,6 +85,11 @@ extension AppDelegate{
 //        window?.rootViewController = navController
     }
 
+    func loadRegisterController(){
+        let navController : UINavigationController = UINavigationController(rootViewController: RegisterViewController())
+        window?.rootViewController = navController
+    }
+    
     func loadSplashController() {
         window?.rootViewController = SplashViewController()
     }
@@ -112,6 +119,9 @@ extension AppDelegate : GIDSignInDelegate{
                                              annotation: annotation) {
             return true
         }
+        if Twitter.sharedInstance().application(application, open: url, options: annotation as! [AnyHashable : Any]){
+            return true
+        }
         return FBSDKApplicationDelegate.sharedInstance().application(application,
                                                                      open: url,
                                                                      // [START old_options]
@@ -127,7 +137,8 @@ extension AppDelegate : GIDSignInDelegate{
         // [END_EXCLUDE]
         if let error = error {
             // [START_EXCLUDE]
-            
+            HUD.flash(.error)
+            self.displayBottomMessage(message: (error?.localizedDescription)!, type: .error)
             // [END_EXCLUDE]
             return
         }
@@ -143,5 +154,67 @@ extension AppDelegate : GIDSignInDelegate{
     }
     // [END headless_google_auth]
     
+}
+
+// MARK: - Remote Notifications -
+
+extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate{
+    
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            print("Permission granted: \(granted)")
+            guard granted else { return }
+            self.getNotificationSettings()
+        }
+    }
+    
+    func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            print("Notification settings: \(settings)")
+            guard settings.authorizationStatus == .authorized else { return }
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
+    
+    //To obtain the APNs device token
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // Pass device token to auth
+        Auth.auth().setAPNSToken(deviceToken, type: AuthAPNSTokenType.sandbox)
+        Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    
+    
+    func application(_ application: UIApplication,
+                     didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register: \(error.localizedDescription)")
+    }
+    
+    //To handle push notifications
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification notification: [AnyHashable : Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if Auth.auth().canHandleNotification(notification) {
+            completionHandler(UIBackgroundFetchResult.noData)
+            return
+        }
+        // This notification is not auth related, developer should handle it.
+    }
+    
+    
+    //MARK: Firebase Messaging
+    
+    
+    // The callback to handle data message received via FCM for devices running iOS 10 or above.
+    func application(received remoteMessage: MessagingRemoteMessage) {
+        print(remoteMessage.appData)
+    }
+    
+    func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
+    }
 }
 

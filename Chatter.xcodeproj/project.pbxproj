@@ -13,6 +13,7 @@
 		F507AA531F99195800CD9FB6 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F507AA521F99195800CD9FB6 /* Utility.swift */; };
 		F52453D31F9B0F1A00CD034E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52453D21F9B0F1A00CD034E /* SplashViewController.swift */; };
 		F5AA45FC1F9907C6009D60DC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5AA45FB1F9900EF009D60DC /* GoogleService-Info.plist */; };
+		F5C8B3601FAF113200FFBA9F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C8B35F1FAF113200FFBA9F /* RegisterViewController.swift */; };
 		F5EEF4E01F9B15D400CCD3F3 /* firebaseload.gif in Resources */ = {isa = PBXBuildFile; fileRef = F5EEF4DE1F9B15D400CCD3F3 /* firebaseload.gif */; };
 		F5F3D13B1F9B267500655209 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3D13A1F9B267500655209 /* Reachability.swift */; };
 		F5F3D13D1F9B2C3100655209 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3D13C1F9B2C3100655209 /* MoreViewController.swift */; };
@@ -60,6 +61,7 @@
 		F507AA521F99195800CD9FB6 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		F52453D21F9B0F1A00CD034E /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		F5AA45FB1F9900EF009D60DC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F5C8B35F1FAF113200FFBA9F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		F5EEF4DE1F9B15D400CCD3F3 /* firebaseload.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = firebaseload.gif; sourceTree = "<group>"; };
 		F5F3D13A1F9B267500655209 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		F5F3D13C1F9B2C3100655209 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,14 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		F5C8B35E1FAF111300FFBA9F /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				F5C8B35F1FAF113200FFBA9F /* RegisterViewController.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
 		F5EEF4DC1F9B15D400CCD3F3 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				F52453D11F9B0ED300CD034E /* Login */,
+				F5C8B35E1FAF111300FFBA9F /* Register */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -616,6 +627,7 @@
 				F5FEC1221F98BF6700497C08 /* AppDelegate.swift in Sources */,
 				F5FEC1D71F9B5E2900044872 /* Extensions.swift in Sources */,
 				F52453D31F9B0F1A00CD034E /* SplashViewController.swift in Sources */,
+				F5C8B3601FAF113200FFBA9F /* RegisterViewController.swift in Sources */,
 				F5F3D13D1F9B2C3100655209 /* MoreViewController.swift in Sources */,
 				F5FEC1DB1F9B67BD00044872 /* PhoneViewController.swift in Sources */,
 				F5FB14581F98DC0A00B6D918 /* Appearance.swift in Sources */,

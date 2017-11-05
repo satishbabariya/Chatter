@@ -13,6 +13,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import TwitterKit
 import Firebase
+import PKHUD
 
 class MoreViewController: UIViewController {
     
@@ -68,11 +69,11 @@ class MoreViewController: UIViewController {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor:#colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)]
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().shadowImage = UIImage()
-
+        
         self.title = "More Login Options"
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: Icon.close, style: .done, target: self, action: #selector(dismis))
-
+        
         
         btnPhone = Button(title: "Phone", titleColor: UIColor.white)
         btnPhone.translatesAutoresizingMaskIntoConstraints = false
@@ -100,14 +101,14 @@ class MoreViewController: UIViewController {
         btnGoogle.backgroundColor = #colorLiteral(red: 0.2941176471, green: 0.4549019608, blue: 1, alpha: 1)
         btnGoogle.cornerRadiusPreset = .cornerRadius1
         self.view.addSubview(btnGoogle)
-        btnGoogle.addTarget(self, action: #selector(btnAction(_:)), for: UIControlEvents.touchUpInside)
+        btnGoogle.addTarget(self, action: #selector(btnGoogleLoginAction(_:)), for: UIControlEvents.touchUpInside)
         
         btnTwitter = Button(title: "Twitter", titleColor: UIColor.white)
         btnTwitter.translatesAutoresizingMaskIntoConstraints = false
         btnTwitter.backgroundColor = #colorLiteral(red: 0.2941176471, green: 0.4549019608, blue: 1, alpha: 1)
         btnTwitter.cornerRadiusPreset = .cornerRadius1
         self.view.addSubview(btnTwitter)
-        btnTwitter.addTarget(self, action: #selector(btnAction(_:)), for: UIControlEvents.touchUpInside)
+        btnTwitter.addTarget(self, action: #selector(btnTwitterLoginAction(_:)), for: UIControlEvents.touchUpInside)
         
         btnCreateAC = Button(title: "Create an account", titleColor: #colorLiteral(red: 0.2941176471, green: 0.4549019608, blue: 1, alpha: 1))
         btnCreateAC.translatesAutoresizingMaskIntoConstraints = false
@@ -116,7 +117,7 @@ class MoreViewController: UIViewController {
         btnCreateAC.cornerRadiusPreset = .cornerRadius1
         self.view.addSubview(btnCreateAC)
         btnCreateAC.addTarget(self, action: #selector(btnAction(_:)), for: UIControlEvents.touchUpInside)
-
+        
     }
     
     func setViewlayout() {
@@ -149,7 +150,7 @@ class MoreViewController: UIViewController {
             let navController : UINavigationController = UINavigationController(rootViewController: emailVC)
             self.present(navController, animated: true, completion: nil)
             break
-        
+            
         default:
             break
         }
@@ -177,8 +178,15 @@ extension MoreViewController : GIDSignInUIDelegate{
     
     
     @objc fileprivate func btnGoogleLoginAction(_ button: Button) {
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().signIn()
+        if Utility.getAppDelegate().reachability.connection == Reachability.Connection.none{
+            self.displayBottomMessage(message: "Network not reachable", type: .warning)
+        } else{
+            DispatchQueue.main.async(execute: {() -> Void in
+                HUD.show(.progress)
+            })
+            GIDSignIn.sharedInstance().uiDelegate = self
+            GIDSignIn.sharedInstance().signIn()
+        }
     }
     
     @objc fileprivate func btnFacebookLoginAction(_ button: Button) {
@@ -186,16 +194,65 @@ extension MoreViewController : GIDSignInUIDelegate{
     }
     
     @objc fileprivate func btnTwitterLoginAction(_ button: Button) {
-        
+        if Utility.getAppDelegate().reachability.connection == Reachability.Connection.none{
+            self.displayBottomMessage(message: "Network not reachable", type: .warning)
+        } else{
+            DispatchQueue.main.async(execute: {() -> Void in
+                HUD.show(.progress)
+            })
+            Twitter.sharedInstance().logIn() { [weak self] (session, error) in
+                if self == nil{
+                    return
+                }
+                if let session = session {
+                    let credential = TwitterAuthProvider.credential(withToken: session.authToken, secret: session.authTokenSecret)
+                    print(session.userID)
+                    print(session.userName)
+                    self?.firebaseLogin(credential)
+                } else {
+                    HUD.flash(.error)
+                    self?.displayBottomMessage(message: (error?.localizedDescription)!, type: .error)
+                }
+            }
+        }
     }
     
     func firebaseLogin(_ credential: AuthCredential) {
-        Auth.auth().signIn(with: credential) { (user, error) in
-            if let error = error {
-                print(error.localizedDescription)
+        Auth.auth().signIn(with: credential) { [weak self] (user, error) in
+            if self == nil{
                 return
             }
-            Utility.getAppDelegate().loadHomeController()
+            if error == nil{
+                HUD.flash(.success)
+                Utility.getAppDelegate().loadRegisterController()
+            }else{
+                HUD.flash(.error)
+                if let newError : NSError = error as NSError?{
+                    if let code : FirebaseAuthErrorCodes = FirebaseAuthErrorCodes(rawValue: newError.code){
+                        self?.displayBottomMessage(message: FirebaseAuthError.shared.translate(FirebaseErrorCode: code), type: .error)
+                    }else {
+                        self?.displayBottomMessage(message: "Unknown Error", type: .error)
+                    }
+                }
+            }
         }
     }
+    
+    //    func twitterRequestForEmail() {
+    //        let client = TWTRAPIClient.withCurrentUser()
+    //        client.requestEmail { email, error in
+    //            if (email != nil) {
+    //                self.updateEmail(email: email!)
+    //            } else {
+    //                print("error: \(error?.localizedDescription)");
+    //            }
+    //        }
+    //    }
+    //
+    //    func updateEmail(email: String){
+    //        Auth.auth().currentUser?.updateEmail(to: email) { (error) in
+    //            HUD.flash(.success)
+    //            Utility.getAppDelegate().loadHomeController()
+    //        }
+    //    }
 }

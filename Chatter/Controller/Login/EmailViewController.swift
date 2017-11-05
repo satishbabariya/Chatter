@@ -168,7 +168,10 @@ class EmailViewController: UIViewController {
             })
             switch viewType {
             case .signup:
-                Auth.auth().createUser(withEmail: txtEmail.text!, password: txtPassword.text!, completion: { (user, error) in
+                Auth.auth().createUser(withEmail: txtEmail.text!, password: txtPassword.text!, completion: {  [weak self] (user, error) in
+                    if self == nil{
+                        return
+                    }
                     if error == nil{
                         //                    user?.displayName
                         //                    user?.isAnonymous
@@ -179,21 +182,24 @@ class EmailViewController: UIViewController {
                         //                    user?.providerID
                         //                    user?.providerData
                         HUD.flash(.success)
-                        Utility.getAppDelegate().loadHomeController()
+                        Utility.getAppDelegate().loadRegisterController()
                     }else{
                         HUD.flash(.error)
                         if let newError : NSError = error as NSError?{
                             if let code : FirebaseAuthErrorCodes = FirebaseAuthErrorCodes(rawValue: newError.code){
-                                self.displayBottomMessage(message: FirebaseAuthError.shared.translate(FirebaseErrorCode: code), type: .error)
+                                self?.displayBottomMessage(message: FirebaseAuthError.shared.translate(FirebaseErrorCode: code), type: .error)
                             }else {
-                                self.displayBottomMessage(message: "Unknown Error", type: .error)
+                                self?.displayBottomMessage(message: "Unknown Error", type: .error)
                             }
                         }
                     }
                 })
                 break
             default:
-                Auth.auth().signIn(withEmail: txtEmail.text!, password: txtPassword.text!, completion: { (user, error) in
+                Auth.auth().signIn(withEmail: txtEmail.text!, password: txtPassword.text!, completion: {  [weak self] (user, error) in
+                    if self == nil{
+                        return
+                    }
                     if error == nil{
                         HUD.flash(.success)
                         Utility.getAppDelegate().loadHomeController()
@@ -201,9 +207,9 @@ class EmailViewController: UIViewController {
                         HUD.flash(.error)
                         if let newError : NSError = error as NSError?{
                             if let code : FirebaseAuthErrorCodes = FirebaseAuthErrorCodes(rawValue: newError.code){
-                                self.displayBottomMessage(message: FirebaseAuthError.shared.translate(FirebaseErrorCode: code), type: .error)
+                                self?.displayBottomMessage(message: FirebaseAuthError.shared.translate(FirebaseErrorCode: code), type: .error)
                             }else {
-                                self.displayBottomMessage(message: "Unknown Error", type: .error)
+                                self?.displayBottomMessage(message: "Unknown Error", type: .error)
                             }
                         }
                     }
