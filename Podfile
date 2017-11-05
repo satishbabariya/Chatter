@@ -25,6 +25,9 @@ target 'Chatter' do
     # [END google_pod]
     pod 'TwitterKit'
     
+    pod 'Firebase/Messaging'
+    pod 'Firebase/Database'
+    pod 'Firebase/Storage'
     
     
     

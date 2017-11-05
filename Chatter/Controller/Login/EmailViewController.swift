@@ -159,52 +159,60 @@ class EmailViewController: UIViewController {
     // MARK: - Internal Helpers
     
     @objc fileprivate func btnAction(_ button: Button) {
-        DispatchQueue.main.async(execute: {() -> Void in
-            HUD.show(.progress)
-        })
-        switch viewType {
-        case .signup:
-            Auth.auth().createUser(withEmail: txtEmail.text!, password: txtPassword.text!, completion: { (user, error) in
-                if error == nil{
-                    //                    user?.displayName
-                    //                    user?.isAnonymous
-                    //                    user?.isEmailVerified
-                    //                    user?.metadata
-                    //                    user?.phoneNumber
-                    //                    user?.photoURL
-                    //                    user?.providerID
-                    //                    user?.providerData
-                    HUD.flash(.success)
-                    Utility.getAppDelegate().loadHomeController()
-                }else{
-                    HUD.flash(.error)
-                    if let newError : NSError = error as NSError?{
-                        if let code : FirebaseAuthErrorCodes = FirebaseAuthErrorCodes(rawValue: newError.code){
-                            self.displayBottomMessage(message: FirebaseAuthError.shared.translate(FirebaseErrorCode: code), type: .error)
-                        }else {
-                            self.displayBottomMessage(message: "Unknown Error", type: .error)
+        
+        if Utility.getAppDelegate().reachability.connection == Reachability.Connection.none{
+            self.displayBottomMessage(message: "Network not reachable", type: .warning)
+        } else{
+            DispatchQueue.main.async(execute: {() -> Void in
+                HUD.show(.progress)
+            })
+            switch viewType {
+            case .signup:
+                Auth.auth().createUser(withEmail: txtEmail.text!, password: txtPassword.text!, completion: { (user, error) in
+                    if error == nil{
+                        //                    user?.displayName
+                        //                    user?.isAnonymous
+                        //                    user?.isEmailVerified
+                        //                    user?.metadata
+                        //                    user?.phoneNumber
+                        //                    user?.photoURL
+                        //                    user?.providerID
+                        //                    user?.providerData
+                        HUD.flash(.success)
+                        Utility.getAppDelegate().loadHomeController()
+                    }else{
+                        HUD.flash(.error)
+                        if let newError : NSError = error as NSError?{
+                            if let code : FirebaseAuthErrorCodes = FirebaseAuthErrorCodes(rawValue: newError.code){
+                                self.displayBottomMessage(message: FirebaseAuthError.shared.translate(FirebaseErrorCode: code), type: .error)
+                            }else {
+                                self.displayBottomMessage(message: "Unknown Error", type: .error)
+                            }
                         }
                     }
-                }
-            })
-            break
-        default:
-            Auth.auth().signIn(withEmail: txtEmail.text!, password: txtPassword.text!, completion: { (user, error) in
-                if error == nil{
-                    HUD.flash(.success)
-                    Utility.getAppDelegate().loadHomeController()
-                }else{
-                    if let newError : NSError = error as NSError?{
-                        if let code : FirebaseAuthErrorCodes = FirebaseAuthErrorCodes(rawValue: newError.code){
-                            self.displayBottomMessage(message: FirebaseAuthError.shared.translate(FirebaseErrorCode: code), type: .error)
-                        }else {
-                            self.displayBottomMessage(message: "Unknown Error", type: .error)
+                })
+                break
+            default:
+                Auth.auth().signIn(withEmail: txtEmail.text!, password: txtPassword.text!, completion: { (user, error) in
+                    if error == nil{
+                        HUD.flash(.success)
+                        Utility.getAppDelegate().loadHomeController()
+                    }else{
+                        HUD.flash(.error)
+                        if let newError : NSError = error as NSError?{
+                            if let code : FirebaseAuthErrorCodes = FirebaseAuthErrorCodes(rawValue: newError.code){
+                                self.displayBottomMessage(message: FirebaseAuthError.shared.translate(FirebaseErrorCode: code), type: .error)
+                            }else {
+                                self.displayBottomMessage(message: "Unknown Error", type: .error)
+                            }
                         }
                     }
-                }
-            })
-            break
+                })
+                break
+            }
+
         }
+        
         
     }
     

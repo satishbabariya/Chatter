@@ -8,6 +8,9 @@
 
 import UIKit
 import Firebase
+import FirebaseInstanceID
+import FirebaseMessaging
+import UserNotifications
 import FBSDKCoreKit
 import GoogleSignIn
 import TwitterKit
@@ -16,10 +19,12 @@ import TwitterKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let reachability = Reachability()!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
         FirebaseApp.configure()
         // [START setup_gidsignin]
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
