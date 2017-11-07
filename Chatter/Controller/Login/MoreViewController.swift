@@ -94,7 +94,7 @@ class MoreViewController: UIViewController {
         btnFacebook.backgroundColor = #colorLiteral(red: 0.2941176471, green: 0.4549019608, blue: 1, alpha: 1)
         btnFacebook.cornerRadiusPreset = .cornerRadius1
         self.view.addSubview(btnFacebook)
-        btnFacebook.addTarget(self, action: #selector(btnAction(_:)), for: UIControlEvents.touchUpInside)
+        btnFacebook.addTarget(self, action: #selector(btnFacebookLoginAction(_:)), for: UIControlEvents.touchUpInside)
         
         btnGoogle = Button(title: "Google", titleColor: UIColor.white)
         btnGoogle.translatesAutoresizingMaskIntoConstraints = false
@@ -190,7 +190,30 @@ extension MoreViewController : GIDSignInUIDelegate{
     }
     
     @objc fileprivate func btnFacebookLoginAction(_ button: Button) {
-        
+        if Utility.getAppDelegate().reachability.connection == Reachability.Connection.none{
+            self.displayBottomMessage(message: "Network not reachable", type: .warning)
+        } else{
+            DispatchQueue.main.async(execute: {() -> Void in
+                HUD.show(.progress)
+            })
+            let loginManager = FBSDKLoginManager()
+            loginManager.logIn(withReadPermissions: ["email"], from: self, handler: {[weak self] (result, error) in
+                if self == nil{
+                    return
+                }
+                if let error = error {
+                    HUD.flash(.error)
+                    self?.displayBottomMessage(message: (error.localizedDescription), type: .error)
+                } else if result!.isCancelled {
+                    HUD.flash(.error)
+                    self?.displayBottomMessage(message: "User canceled", type: .error)
+                } else {
+                    
+                    let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                    self?.firebaseLogin(credential)
+                }
+            })
+        }
     }
     
     @objc fileprivate func btnTwitterLoginAction(_ button: Button) {

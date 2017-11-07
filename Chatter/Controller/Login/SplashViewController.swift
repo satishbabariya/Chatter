@@ -89,7 +89,7 @@ class SplashViewController: UIViewController {
         let metrics : Dictionary = ["btnHeight":ButtonLayout.Raised.height]
         let horizontalConstraint : [NSLayoutConstraint] = NSLayoutConstraint.constraints(withVisualFormat: "H:|-30-[firebaseLogo]-30-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views)
         self.view.addConstraints(horizontalConstraint)
-        let verticalConstraint : [NSLayoutConstraint] = NSLayoutConstraint.constraints(withVisualFormat: "V:|-50-[firebaseLogo]-[btnCreateAcount(==btnHeight)]-[btnEmailLogin(==btnHeight)]-[btnMore(==btnHeight)]-20-|", options: [.alignAllLeft,.alignAllRight], metrics: metrics, views: views)
+        let verticalConstraint : [NSLayoutConstraint] = NSLayoutConstraint.constraints(withVisualFormat: "V:|-50-[firebaseLogo]-[btnCreateAcount(==btnHeight)]-[btnEmailLogin(==btnHeight)]-[btnMore(==btnHeight)]-30-|", options: [.alignAllLeft,.alignAllRight], metrics: metrics, views: views)
         self.view.addConstraints(verticalConstraint)
     }
     

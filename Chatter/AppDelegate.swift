@@ -26,8 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        FirebaseApp.configure()
+        FirebaseApp.configure()        
         registerForPushNotifications()
+        Messaging.messaging().delegate = self
         // [START setup_gidsignin]
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
@@ -138,7 +139,6 @@ extension AppDelegate : GIDSignInDelegate{
         if let error = error {
             // [START_EXCLUDE]
             HUD.flash(.error)
-            self.displayBottomMessage(message: (error?.localizedDescription)!, type: .error)
             // [END_EXCLUDE]
             return
         }
