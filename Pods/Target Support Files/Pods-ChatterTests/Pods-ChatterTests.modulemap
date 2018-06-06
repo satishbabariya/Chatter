@@ -1,6 +1,0 @@
-framework module Pods_ChatterTests {
-  umbrella header "Pods-ChatterTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
