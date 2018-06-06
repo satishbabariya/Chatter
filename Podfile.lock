@@ -1,0 +1,237 @@
+PODS:
+  - AsyncSwift (2.0.4)
+  - BoringSSL (10.0.3):
+    - BoringSSL/Implementation (= 10.0.3)
+    - BoringSSL/Interface (= 10.0.3)
+  - BoringSSL/Implementation (10.0.3):
+    - BoringSSL/Interface (= 10.0.3)
+  - BoringSSL/Interface (10.0.3)
+  - Closures (0.4)
+  - Dwifft (0.8)
+  - Firebase/Auth (5.1.0):
+    - Firebase/CoreOnly
+    - FirebaseAuth (= 5.0.0)
+  - Firebase/Core (5.1.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.0.1)
+  - Firebase/CoreOnly (5.1.0):
+    - FirebaseCore (= 5.0.2)
+  - Firebase/Database (5.1.0):
+    - Firebase/CoreOnly
+    - FirebaseDatabase (= 5.0.1)
+  - Firebase/Functions (5.1.0):
+    - Firebase/CoreOnly
+    - FirebaseFunctions (= 2.0.0)
+  - Firebase/Messaging (5.1.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.0.1)
+  - Firebase/Storage (5.1.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (= 3.0.0)
+  - FirebaseAnalytics (5.0.1):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - nanopb (~> 0.3)
+  - FirebaseAuth (5.0.0):
+    - FirebaseCore (~> 5.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseCore (5.0.2):
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseDatabase (5.0.1):
+    - FirebaseCore (~> 5.0)
+    - leveldb-library (~> 1.18)
+  - FirebaseFirestore (0.12.2):
+    - FirebaseCore (~> 5.0)
+    - FirebaseFirestore/abseil-cpp (= 0.12.2)
+    - gRPC-ProtoRPC (~> 1.0)
+    - leveldb-library (~> 1.18)
+    - Protobuf (~> 3.1)
+  - FirebaseFirestore/abseil-cpp (0.12.2):
+    - FirebaseCore (~> 5.0)
+    - gRPC-ProtoRPC (~> 1.0)
+    - leveldb-library (~> 1.18)
+    - Protobuf (~> 3.1)
+  - FirebaseFunctions (2.0.0):
+    - FirebaseCore (~> 5.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseInstanceID (3.0.0):
+    - FirebaseCore (~> 5.0)
+  - FirebaseMessaging (3.0.1):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.1)
+  - FirebaseStorage (3.0.0):
+    - FirebaseCore (~> 5.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseUI/Database (5.0.0):
+    - Firebase/Database (~> 5.0)
+  - Gifu (3.0.0)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - GoogleToolboxForMac/Logger (2.1.4):
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - gRPC (1.12.0):
+    - gRPC-RxLibrary (= 1.12.0)
+    - gRPC/Main (= 1.12.0)
+  - gRPC-Core (1.12.0):
+    - gRPC-Core/Implementation (= 1.12.0)
+    - gRPC-Core/Interface (= 1.12.0)
+  - gRPC-Core/Implementation (1.12.0):
+    - BoringSSL (~> 10.0)
+    - gRPC-Core/Interface (= 1.12.0)
+    - nanopb (~> 0.3)
+  - gRPC-Core/Interface (1.12.0)
+  - gRPC-ProtoRPC (1.12.0):
+    - gRPC (= 1.12.0)
+    - gRPC-RxLibrary (= 1.12.0)
+    - Protobuf (~> 3.0)
+  - gRPC-RxLibrary (1.12.0)
+  - gRPC/Main (1.12.0):
+    - gRPC-Core (= 1.12.0)
+    - gRPC-RxLibrary (= 1.12.0)
+  - GTMSessionFetcher/Core (1.1.15)
+  - ImagePicker (3.0.0)
+  - Kingfisher (4.8.0)
+  - leveldb-library (1.20)
+  - Material (2.15.0):
+    - Material/Core (= 2.15.0)
+  - Material/Core (2.15.0):
+    - Motion (~> 1.3.0)
+  - MessageKit (1.0.0-beta.1)
+  - Motion (1.3.5):
+    - Motion/Core (= 1.3.5)
+  - Motion/Core (1.3.5)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - PKHUD (5.0.0)
+  - Protobuf (3.5.0)
+  - ReachabilitySwift (4.1.0)
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxFirebase/Database (0.2):
+    - FirebaseDatabase (~> 5)
+    - RxCocoa (~> 4)
+    - RxSwift (~> 4)
+  - RxFirebase/Firestore (0.2):
+    - FirebaseFirestore (~> 0.12)
+    - RxCocoa (~> 4)
+    - RxSwift (~> 4)
+  - RxSwift (4.1.2)
+  - SwiftMessages (4.1.4):
+    - SwiftMessages/App (= 4.1.4)
+  - SwiftMessages/App (4.1.4)
+  - TinyConstraints (3.1.1)
+
+DEPENDENCIES:
+  - AsyncSwift
+  - Closures
+  - Dwifft
+  - Firebase/Auth
+  - Firebase/Core
+  - Firebase/Database
+  - Firebase/Functions
+  - Firebase/Messaging
+  - Firebase/Storage
+  - FirebaseUI/Database
+  - Gifu
+  - ImagePicker
+  - Kingfisher
+  - Material
+  - MessageKit (~> 1.0.0-beta.1)
+  - PKHUD
+  - ReachabilitySwift
+  - RxCocoa
+  - RxFirebase/Database
+  - RxFirebase/Firestore
+  - RxSwift
+  - SwiftMessages
+  - TinyConstraints
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AsyncSwift
+    - BoringSSL
+    - Closures
+    - Dwifft
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseAuth
+    - FirebaseCore
+    - FirebaseDatabase
+    - FirebaseFirestore
+    - FirebaseFunctions
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - FirebaseStorage
+    - FirebaseUI
+    - Gifu
+    - GoogleToolboxForMac
+    - gRPC
+    - gRPC-Core
+    - gRPC-ProtoRPC
+    - gRPC-RxLibrary
+    - GTMSessionFetcher
+    - ImagePicker
+    - Kingfisher
+    - leveldb-library
+    - Material
+    - MessageKit
+    - Motion
+    - nanopb
+    - PKHUD
+    - Protobuf
+    - ReachabilitySwift
+    - RxCocoa
+    - RxFirebase
+    - RxSwift
+    - SwiftMessages
+    - TinyConstraints
+
+SPEC CHECKSUMS:
+  AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
+  BoringSSL: c46efb47593135382bc0934196f16d2f726f5f36
+  Closures: fe9ecbda045d8d42cc13520209b4ea5208e38248
+  Dwifft: 463e61d07322fdf83b32ee6975ca1b20708db746
+  Firebase: e08fb0795f35707aeb1d8a715c731c45bdf6fd56
+  FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
+  FirebaseAuth: acbeef02fe7c3a26624e309849f3fe30c84115af
+  FirebaseCore: b81044df1044c0857a0737c6324678b72d4f7f00
+  FirebaseDatabase: 482bad9c2abd422bb2321194fb8c937e67426a89
+  FirebaseFirestore: 93b8bf70484c92c271ae93940fe1e2ca9e35f92b
+  FirebaseFunctions: 141da172b7491276d9da8715b8ca88f9e439ffb6
+  FirebaseInstanceID: 83e0040351565df711a5db3d8ebe5ea21aca998a
+  FirebaseMessaging: ec6fde5a77824c6da0218f9ca220feb251aa17d5
+  FirebaseStorage: 7ca4bb7b58a25fa647b04f524033fc7cb7eb272b
+  FirebaseUI: 0e9ab15e00073e421890c755b6f2bd757605601f
+  Gifu: 6543ca2056a3d697097c09fe543ef49348ccc892
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  gRPC: 9362451032695e2dfb7bafcd3740e3a27939e4ff
+  gRPC-Core: 9696b220565b283e021cf2722d473a4a74b7622a
+  gRPC-ProtoRPC: a1bd56fb1991a8dae4581250d7259eddabb66779
+  gRPC-RxLibrary: 1ed5314e8b38cd6e55c9bfa048387136ae925ce9
+  GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
+  ImagePicker: 973953c25960fe04729a7082a56194321c6762d2
+  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
+  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  Material: 00e32bb5e61b3f749044897b2d93acd8bf33faa4
+  MessageKit: 6f1313d60e480e4b09641582c65f3e36825a5bf4
+  Motion: 9f74d115d7f72bb5380a8e3cde2f8a1fc898ac36
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
+  Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
+  ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxFirebase: 748f91527634afe8e46385ab7922757bbe57bc8b
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
+  SwiftMessages: 2c33fdee8b8f38dfc7e1036684456b505891da8c
+  TinyConstraints: c15ce864e9ef87dfd18ee3bd746d510a38d84198
+
+PODFILE CHECKSUM: f9021014e6be9a0d2411c3079c89b0629e26afa9
+
+COCOAPODS: 1.5.0
